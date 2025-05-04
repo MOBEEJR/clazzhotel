@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clazz Hotel & Lounge</title>
+  <meta name="description" content="Welcome to Clazz Hotel & Lounge, the ultimate in luxury and comfort.">
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#003b64">
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Swiper.js for Carousel -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <!-- AOS for scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    /* Make the layout adapt to all screen sizes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #f7f7f7;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Ensure images and sections scale properly */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Containers adapt to screen size */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Responsive text sizes */
+h1, h2, h3 {
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+
+/* Navigation bar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #000;
+  color: #fff;
+  padding: 15px 20px;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Section padding */
+section {
+  padding: 40px 20px;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  section {
+    padding: 30px 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+    .logo-img {
+  width: 120px;
+  border-radius: 12px; /* Makes corners rounded */
+}
+    .video-container {
+  display: flex;
+  justify-content: center; /* Centers the video horizontally */
+  align-items: center;     /* Centers the video vertically */
+  height: 70vh;           /* Full viewport height */
+  width: 100%;             /* Ensures the container takes up full width */
+}
+
+.curved-video {
+  width: 80%;              /* Set the video to take 80% of the container's width */
+  max-width: 280px;       /* Restrict the width to a maximum size */
+  height: auto;            /* Maintain the aspect ratio */
+  border-radius: 25px;     /* Curved edges */
+}
+    .gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.gallery-image {
+  width: 30%;
+  height: auto;
+  border-radius: 15px;  /* Add curved edges */
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);  /* Enlarge on hover */
+}
+    .about {
+  text-align: center;
+  padding: 40px;
+}
+
+.about-box {
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  padding: 20px;
+  width: 80%; /* Adjust the width */
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-box:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+    :root { --eko-blue:#003b64; --eko-gold:#be925f; --text-dark:#333; --bg-light:#f7f7f7; --bg-white:#fff; }
+    html { scroll-behavior:smooth; }
+    body { margin:0;font-family:'Public Sans',sans-serif;background:var(--bg-light);color:var(--text-dark);overflow-x:hidden; }
+    /* Loader */
+    #loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--eko-blue);display:none;align-items:center;justify-content:center;z-index:9999;}
+    #loader.active{display:flex;}
+    #loader h1{color:#fff;font-size:4em;letter-spacing:.3em;animation:fade 1s infinite alternate;}
+    @keyframes fade{from{opacity:.6;}to{opacity:1;}}
+    /* Top Bar */
+    .top-bar{background:var(--bg-white);display:flex;justify-content:center;align-items:center;gap:1em;padding:.5em;}
+    .top-bar a{color:var(--eko-blue);text-decoration:none;font-weight:600;cursor:pointer;}
+    .selector{display:flex;gap:5px;}
+    select{padding:.5em;border:1px solid #ccc;border-radius:4px;}
+    /* Nav */
+    nav.main{background:var(--bg-white);box-shadow:0 2px 5px rgba(0,0,0,.1);position:sticky;top:0;z-index:10;}
+    .container{max-width:1200px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;}
+    .logo img{height:100px;width: 100pt;}
+    ul.menu{list-style:none;display:flex;gap:1em;margin:0;padding:0;}
+    ul.menu li a{color:var(--eko-blue);font-weight:600;padding:.75em;display:block;text-decoration:none;cursor:pointer;}
+    /* Hero */
+    .swiper{width:100%;height:60vh;}
+    .swiper-slide{background-position:center;background-size:cover;position:relative;}
+    .overlay{background:rgba(0,0,0,.3);position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+    .overlay h1{color:#fff;font-size:3em;text-transform:uppercase;}
+    /* Booking */
+    .booking-form{background:var(--bg-white);margin:60px auto;padding:40px 20px;max-width:600px;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);}
+    .booking-form h2{color:var(--eko-blue);text-align:center;margin-bottom:20px;}
+    .field{margin-bottom:15px;}
+    .field input,.field select{width:100%;padding:12px;border:1px solid #ccc;border-radius:4px;}
+    #check-btn{width:100%;padding:12px;background:var(--eko-gold);border:none;color:#fff;cursor:pointer;border-radius:4px;font-weight:600;}
+    /* Sections */
+    section {padding:60px 20px;background:var(--bg-white);}
+    h2.section-title{color:var(--eko-blue);text-align:center;margin:60px 0 20px;font-size:2.5em;}    
+    /* Rooms */
+    .grid{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+    .card{background:var(--bg-white);border-radius:8px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:transform .3s;}
+    .card:hover{transform:translateY(-5px);}
+    .card img{width:100%;height:200px;object-fit:cover;}
+    .info{padding:20px;text-align:left;}
+    .info h3{margin:0 0 10px;color:var(--eko-blue);}
+    .info ul{list-style:none;padding:0;margin:0 0 15px;}
+    .info ul li{margin-bottom:8px;}
+    .price{font-size:1.2em;color:var(--eko-gold);margin-bottom:15px;}
+    .btn{display:inline-block;padding:10px 20px;background:var(--eko-gold);color:#fff;text-decoration:none;border-radius:4px;font-weight:600;transition:background .3s;}
+    .btn:hover{background:#a77b5c;}
+    /* Events */
+    .event-calendar{max-width:1200px;margin:60px auto;}
+    .event-grid{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+    .event-card{background:var(--bg-white);border-radius:8px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.1);transition:transform .3s;}
+    .event-card:hover{transform:translateY(-5px);}
+    .event-card img{width:100%;height:180px;object-fit:cover;}
+    .event-info{padding:20px;}
+    .event-info h3{margin:0 0 10px;color:var(--eko-blue);}
+    .event-info p{margin:0 0 15px;}
+    .event-info .btn-ticket{background:var(--eko-blue);color:#fff;padding:10px 20px;border:none;border-radius:4px;text-decoration:none;font-weight:600;cursor:pointer;}
+    .event-info .btn-ticket:hover{background:#002a4a;}
+    /* Contact & Map */
+    .contact .cols{display:grid;gap:30px;grid-template-columns:1fr 1fr;max-width:1200px;margin:auto;}    
+    .contact form input,.contact form textarea{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:4px;}
+    .contact form button{background:var(--eko-gold);color:#fff;border:none;padding:12px;cursor:pointer;border-radius:4px;}
+    .details p{margin:8px 0;}
+    .details a{color:var(--eko-blue);text-decoration:none;}
+    .details iframe{width:100%;height:360px;border:0;border-radius:8px;margin-top:15px;}
+    /* WhatsApp */
+    .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:15px;border-radius:50%;font-size:24px;box-shadow:0 px 8px rgba(0,0,0,.3);z-index:100;}
+    /* Responsive */
+    @media(max-width:768px){.contact .cols{grid-template-columns:1fr;} }
+    #gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 20px;
+  white-space: nowrap;
+}
+
+#gallery .gallery-item {
+  flex: 0 0 auto;
+  width: 180px;  /* Smaller width */
+  height: 120px; /* Smaller height */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+#gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+#gallery .gallery-item:hover img {
+  transform: scale(1.05);
+}
+/* Blue Footer Background */
+footer {
+  background-color: #0000ff;
+  color: #fff;
+  padding: 40px;
+  text-align: center;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .room {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  #whatsapp-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader"><h1>CLAZZ</h1></div>
+
+  <!-- Top Bar -->
+  <div class="top-bar" data-aos="fade-down">
+    <a class="nav-link" href="#rooms">Rooms</a>
+    <a class="nav-link" href="#dining">Dining</a>
+    <a class="nav-link" href="#events">Events</a>
+    <a class="nav-link" href="#gallery">Gallery</a>
+    <div class="selector">
+    </div>
+  </div>
+  <!-- Nav -->
+  <nav class="main" data-aos="fade-down" data-aos-delay="100">
+    <div class="container">
+      <img src="18.jpg" alt="Logo" class="logo-img">
+      <ul class="menu">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About Us</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Hero -->
+  <section id="home" class="swiper" data-aos="fade-up">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url('2.jpg')"><div class="overlay"><h1>Welcome to CLAZZ</h1></div></div>
+      <div class="swiper-slide" style="background-image:url('19.jpg')"><div class="overlay"><h1>Experience Luxury</h1></div></div>
+    </div>
+    <!-- Deploy Badge -->
+  <section>
+    <h2>Deployment Status</h2>
+    <img src="https://api.netlify.com/api/v1/badges/[![Netlify Status](https://api.netlify.com/api/v1/badges/6fc29c51-cf18-49c4-9417-c09ff9597b11/deploy-status)](https://app.netlify.com/sites/clazzhotel/deploys)/deploy-status" alt="Netlify Build Status">
+  </section>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </section>
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-box">
+      <h2>About Clazz Hotel & Lounge</h2>
+      <p><strong>Welcome to CLAZZ Hotel and Lounge, a luxurious sanctuary nestled in the heart of Victoria Island, Lagos. Located at 22 Trinity Avenue, Oniru, CLAZZ blends modern sophistication with timeless elegance, offering an unforgettable hospitality experience.
+
+        At CLAZZ, we believe in excellence. Whether you're here for business, leisure, or a special celebration, our world-class rooms and suites, exceptional dining experiences, and serene lounge spaces are designed to provide comfort, class, and convenience.
+        
+        Our dedicated staff delivers impeccable service with a personal touch, ensuring every guest feels valued and at home. From our beautifully furnished rooms to our high-end recreational facilities, every detail is carefully curated to reflect the CLAZZ standard.
+        
+        Discover a new level of luxury.
+        Discover CLAZZ.</strong></p>
+    </div>
+  </section>
+  <h2 class="section-title" data-aos="fade-up">SEE CLAZZ</h2>
+  <div class="video-container">
+    <video autoplay muted loop class="curved-video">
+      <source src="CLAZZVIDEO.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+<!-- Embed Instagram Reel -->
+<blockquote class="instagram" data-instgrm-permalink="https://www.instagram.com/reel/DIR-FGes5OD/?igsh=MXVlNnRseWtrc3Nsaw==" data-instgrm-version="12">
+  <a href="https://www.instagram.com/reel/DIR-FGes5OD/?igsh=MXVlNnRseWtrc3Nsaw=="></a>
+</blockquote>
+<script async src="https://www.instagram.com/embed.js"></script>
+  <!-- Rooms -->
+  <h2 class="section-title" data-aos="fade-up">Rooms & Suites</h2>
+  <section class="rooms" id="rooms" data-aos="fade-up">
+    <div class="grid">
+      
+      <!-- Repeat for 6 rooms -->
+      <div class="card"><img src="8.jpg"><div class="info"><h3>Standard Room (Norwich)</h3><ul><li>📺 Flat TV</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li></ul><p class="price" data-base="35000">₦35,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
+      <div class="card"><img src="4.jpg"><div class="info"><h3>Deluxe Room (Oxfrord)</h3><ul><li>📺 Flat TV</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li></ul><p class="price" data-base="40000">₦40,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
+      <div class="card"><img src="3.jpg"><div class="info"><h3>Suite 1 Cambridge</h3><ul><li>📺 Flat TV</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li></ul><p class="price" data-base="50000">₦50,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
+      <div class="card"><img src="7.jpg"><div class="info"><h3>Suite 2 (Apartment, California)</h3><ul><li>📺 Flat TV</li><li>🧺 Laundry</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li></ul><p class="price" data-base="60000">₦60,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
+      <div class="card"><img src="6.jpg"><div class="info"><h3>Executive(Atlanta)</h3><ul><li>📺 Flat TV</li><li>🧺 Laundry</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li></ul><p class="price" data-base="70000">₦70,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
+      <div class="card"><img src="2.jpg"><div class="info"><h3>Presidential (Washington)</h3><ul><li>📺 Flat TV</li><li>🧺 Laundry</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li><li>🧊 Mini Fridge</li></ul><p class="price" data-base="100000">₦100,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
+    </div>
+  </section>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dining with CLAZZ</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .dining-section {
+      padding: 50px 20px;
+      background: #f9fbfd;
+    }
+
+    .dining-title {
+      text-align: center;
+      font-size: 36px;
+      color: #007BFF;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .menu-subtitle {
+      font-size: 24px;
+      margin: 30px 10px 10px;
+      color: #222;
+    }
+
+    .menu-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .menu-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .menu-card {
+      flex: 0 0 auto;
+      min-width: 200px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s;
+      scroll-snap-align: start;
+    }
+
+    .menu-card:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .menu-name {
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .menu-price {
+      color: #007BFF;
+      font-size: 15px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DINING WITH CLAZZ Section -->
+  <section id="dining" class="dining-section">
+    <h2 class="dining-title">DINING WITH CLAZZ</h2>
+
+    <!-- FOOD SECTION -->
+    <h3 class="menu-subtitle">Our Food Menu</h3>
+    <div class="menu-scroll">
+      <div class="menu-card"><img src="54.jpg" alt="Jollof Rice"/><p class="menu-name">Jollof Rice</p><p class="menu-price">₦3,500</p></div>
+      <div class="menu-card"><img src="38.jpg" alt="Fried Rice & Chicken"/><p class="menu-name">Fried Rice & Chicken</p><p class="menu-price">₦4,000</p></div>
+      <div class="menu-card"><img src="47.jpg" alt="Efo Riro"/><p class="menu-name">Efo Riro & Pounded Yam</p><p class="menu-price">₦4,200</p></div>
+      <div class="menu-card"><img src="55.jpg" alt="Egusi"/><p class="menu-name">Egusi & Semovita</p><p class="menu-price">₦3,800</p></div>
+      <div class="menu-card"><img src="40.jpg" alt="Shawarma"/><p class="menu-name">Shawarma</p><p class="menu-price">₦2,500</p></div>
+      <div class="menu-card"><img src="57.jpg" alt="Grilled Turkey"/><p class="menu-name">Grilled Turkey</p><p class="menu-price">₦4,000</p></div>
+      <div class="menu-card"><img src="45.jpg" alt="Asun"/><p class="menu-name">Asun</p><p class="menu-price">₦4,500</p></div>
+      <div class="menu-card"><img src="43.jpg" alt="Seafood Pasta"/><p class="menu-name">Seafood Pasta</p><p class="menu-price">₦5,200</p></div>
+      <div class="menu-card"><img src="49.jpg" alt="Club Sandwich"/><p class="menu-name">Club Sandwich</p><p class="menu-price">₦3,000</p></div>
+      <div class="menu-card"><img src="48.jpg" alt="Yam & Egg"/><p class="menu-name">Yam & Egg Sauce</p><p class="menu-price">₦2,800</p></div>
+    </div>
+
+    <!-- DRINKS SECTION -->
+    <h3 class="menu-subtitle">Lounge Drinks</h3>
+    <div class="menu-scroll">
+      <div class="menu-card"><img src="42.jpg" alt="Hennessy"/><p class="menu-name">Hennessy VS</p><p class="menu-price">₦15,000</p></div>
+      <div class="menu-card"><img src="37.jpg" alt="Martell"/><p class="menu-name">Martell Blue Swift</p><p class="menu-price">₦20,000</p></div>
+      <div class="menu-card"><img src="46.jpg" alt="Moet"/><p class="menu-name">Moët & Chandon</p><p class="menu-price">₦30,000</p></div>
+      <div class="menu-card"><img src="50.jpg" alt="Smirnoff"/><p class="menu-name">Smirnoff Ice</p><p class="menu-price">₦2,000</p></div>
+      <div class="menu-card"><img src="39.jpg" alt="Guinness"/><p class="menu-name">Guinness Smooth</p><p class="menu-price">₦1,500</p></div>
+      <div class="menu-card"><img src="41.jpg" alt="Baileys"/><p class="menu-name">Baileys Irish Cream</p><p class="menu-price">₦10,000</p></div>
+      <div class="menu-card"><img src="36.jpg" alt="Heineken"/><p class="menu-name">Heineken</p><p class="menu-price">₦1,800</p></div>
+      <div class="menu-card"><img src="44.jpg" alt="Trophy"/><p class="menu-name">Trophy Stout</p><p class="menu-price">₦1,200</p></div>
+      <div class="menu-card"><img src="51.jpg" alt="Red Wine"/><p class="menu-name">Red Wine</p><p class="menu-price">₦4,500</p></div>
+      <div class="menu-card"><img src="52.jpg" alt="Coke"/><p class="menu-name">Coca-Cola</p><p class="menu-price">₦1,000</p></div>
+    </div>
+  </section>
+
+</body>
+</html>
+  <!-- Events -->
+  <section class="event-calendar" id="events" data-aos="fade-up">
+    <h2>Events & Ticketing</h2>
+    <div class="event-grid">
+      <div class="event-card"><img src="25.jpg"><div class="event-info"><h3>Easter Monday</h3><p>Celebrate Easter Monday with CLAZZ Opening 21st April 2025...6pm music polic: Dj yungfab
+        <p>Time:6:00 PM - Late</p>
+        <p>Venue: Clazz</p>
+       <p> Dress code: Smart casual</p>
+      </p><a href="#" class="btn-ticket">CLAZZ</a></div></div>
+      <div class="event-card"><img src="26.jpg"><div class="event-info"><h3>CLAZZ Rooftop Chill</h3><p>Vibes, music and, cocktails - every weekend on the Rooftop. 7PM till late.
+      </p><a href="#" class="btn-ticket">CLAZZ</a></div></div>
+      <div class="event-card"><img src="28.jpg"><div class="event-info"><h3>CLAZZ Football Nights - UCL Semi Final</h3><p>Watch the UCL champions League Semi-Final live on the big screen! April 30, 2025, 7PM. Drinks, vibes, and Football
+        <p>Dress Code: Casual & Sporty</p>
+      </p><a href="#" class="btn-ticket">CLAZZ</a></div></div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <h2><bold>GALLERY</bold></h2>
+  <div class="gallery">
+    <img src="2.jpg" alt="Gallery Image 1" class="gallery-image">
+    <img src="6.jpg" alt="Gallery Image 2" class="gallery-image">
+    <img src="7.jpg" alt="Gallery Image 3" class="gallery-image">
+  </div>
+  </section>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact & Inquiry | CLAZZ HOTEL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    section.contact {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section.contact h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .contact-cols {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    form#inquiry-form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    form#inquiry-form input,
+    form#inquiry-form textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    form#inquiry-form button {
+      width: 100%;
+      padding: 14px;
+      background: #0f4c81;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form#inquiry-form button:hover {
+      background: #0a3c65;
+    }
+
+    .contact-info {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-info h3 {
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .contact-info a {
+      color: #0f4c81;
+      text-decoration: none;
+    }
+
+    .contact-info iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce 2s infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebd5a;
+    }
+
+    .whatsapp-float img {
+      width: 28px;
+      height: 28px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact & Inquiry</h2>
+    <div class="contact-cols">
+      
+      <!-- Inquiry Form -->
+      <form id="inquiry-form">
+        <input type="text" name="name" id="name" placeholder="Your Name" required>
+        <input type="email" name="email" id="email" placeholder="Your Email" required>
+        <textarea name="message" id="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send to WhatsApp</button>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Contact Info</h3>
+        <p><strong>Email:</strong> <a href="mailto:clazzhotel@gmail.com">clazzofficially@gmail.com</a></p>
+        <p><strong>Whatsapp:</strong> <a href="+2348106268190">+2348106268190</a></p>
+        <p><strong>Phone No</strong> <a href="08106268190">08129749637</a></p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com/clazzhotel" target="_blank">@clazzhotel</a></p>
+        <p><strong>Location:</strong> 22 Trinity Avenue, Oniru, Victoria Island, Lagos</p>
+        <iframe src="https://www.google.com/maps?q=22+Trinity+Avenue+Oniru+Victoria+Island+Lagos&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/2348101234567" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
+  </a>
+
+  <!-- JavaScript for WhatsApp Send -->
+  <script>
+    document.getElementById("inquiry-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let message = document.getElementById("message").value.trim();
+      let whatsappNumber = "2348101234567"; // <-- Replace with your WhatsApp number
+
+      let url = https://wa.me/${+2348106268190}?text=Hello%20CLAZZ%20Hotel,%0AMy%20name%20is%20${encodeURIComponent(name)}.%0AEmail:%20${encodeURIComponent(email)}.%0AMessage:%20${encodeURIComponent(message)};
+      window.open(url, "_blank");
+    });
+  </script>
+<!-- Prevent XSS (Cross-Site Scripting) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted-scripts.com">
+
+<!-- Prevent Clickjacking -->
+<meta http-equiv="X-Frame-Options" content="DENY">
+
+<!-- Disable MIME Sniffing -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+</body>
+</html>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/index.global.min.js"></script>
+  <script>
+    // Initialize
+    AOS.init({ duration:800 });
+    new Swiper('.swiper',{navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});
+    // Loader + navigation handling
+    document.querySelectorAll('.nav-link, #check-btn, .btn-ticket').forEach(el=>el.addEventListener('click',e=>{
+      e.preventDefault(); const target=e.currentTarget.getAttribute('href');
+      document.getElementById('loader').classList.add('active');
+      setTimeout(()=>{
+        document.getElementById('loader').classList.remove('active');
+        if(target&&target.startsWith('#')) document.querySelector(target).scrollIntoView({behavior:'instant'});
+        else if(el.id==='check-btn') alert('Redirecting to secure payment gateway...');
+      },800);
+    }));
+    // Calendar
+    document.addEventListener('DOMContentLoaded',()=>{const calEl=document.getElementById('calendar');if(calEl){const cal=new FullCalendar.Calendar(calEl,{initialView:'dayGridMonth',events:'/api/events'});cal.render();}});
+    // Currency toggle
+    document.getElementById('currency-select').addEventListener('change',function(){const rate=this.value==='USD'?0.0025:1;document.querySelectorAll('.price').forEach(el=>{const base=el.dataset.base;const val=Math.round(base*rate);el.textContent=(this.value==='NGN'? '₦':'$')+val+'/night';});});
+    // Inquiry
+    document.getElementById('inquiry-form').addEventListener('submit',function(e){e.preventDefault();window.location='mailto:info@clazzhotel.com?subject=Inquiry&body='+encodeURIComponent(this.message.value);});
+  </script>
+  <footer>&copy;2025 Clazz Hotel & Lounge &ndash; All Rights Reserved</footer>
+  <link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+  
+</script>
+<script>
+  window.addEventListener('load', () => {
+    const welcomeMsg = new SpeechSynthesisUtterance("Welcome to CLAZZ");
+
+    // Try to use a sweet female voice if available
+    const voices = window.speechSynthesis.getVoices();
+    const femaleVoice = voices.find(voice =>
+      voice.name.toLowerCase().includes("female") || voice.name.toLowerCase().includes("google use english")
+    );
+
+    if (femaleVoice) {
+      welcomeMsg.voice = femaleVoice;
+    }
+
+    welcomeMsg.pitch = 1.2;     // Slightly higher pitch
+    welcomeMsg.rate = 1;        // Normal speaking rate
+    welcomeMsg.volume = 1;      // Full volume
+
+    // Some browsers load voices asynchronously
+    if (voices.length === 0) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        const updatedVoices = window.speechSynthesis.getVoices();
+        const femaleVoice = updatedVoices.find(voice =>
+          voice.name.toLowerCase().includes("female") || voice.name.toLowerCase().includes("google us english")
+        );
+        if (femaleVoice) {
+          welcomeMsg.voice = femaleVoice;
+        }
+        speechSynthesis.speak(welcomeMsg);
+      };
+    } else {
+      speechSynthesis.speak(welcomeMsg);
+    }
+  });
+</script>
+</body>
+</html>
