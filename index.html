@@ -7,6 +7,40 @@
   <meta name="description" content="Welcome to Clazz Hotel & Lounge, the ultimate in luxury and comfort.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  video,
+iframe,
+form {
+  max-width: 100%;
+}
+  .whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: bounce 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+}
+  html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
   * {
     box-sizing: border-box;
     margin: 0;
@@ -327,6 +361,98 @@ footer {
     height: 40px;
   }
 }
+/* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  footer p {
+    font-size: 12px;
+  }
+}
+
+/* Laptop responsiveness */
+@media only screen and (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1.1rem;
+  }
+}
+/* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  footer p {
+    font-size: 12px;
+  }
+}
+
+/* Laptop responsiveness */
+@media only screen and (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1.1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -408,7 +534,6 @@ footer {
       <div class="card"><img src="2.jpg"><div class="info"><h3>Presidential (Washington)</h3><ul><li>📺 Flat TV</li><li>🧺 Laundry</li><li>🔌 WiFi</li><li>☕ Coffee & Tea</li><li>🛎 24h Service</li><li>📞 Intercom</li><li>🧊 Mini Fridge</li></ul><p class="price" data-base="100000">₦100,000/night</p><a href="#availability" class="btn">Book Now</a></div></div>
     </div>
   </section>
-  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -488,6 +613,7 @@ footer {
       font-size: 15px;
       margin-top: 5px;
     }
+    
   </style>
 </head>
 <body>
@@ -500,18 +626,43 @@ footer {
     <h3 class="menu-subtitle">CLAZZ FOOD MENU</h3>
     <div class="menu-scroll">
       <div class="menu-card"><img src="18.jpg" alt="CLAZZ"/><p class="menu-name">*CLAZZ FOOD MENU*</p><p class="menu-price"><B><I>Dine Elegance. Dine CLAZZ</p></div></B></I>
-      <div class="menu-card"><img src="54.jpg" alt="Jollof Rice"/><p class="menu-name">Jollof Rice</p><p class="menu-price">₦3,500</p></div>
-      <div class="menu-card"><img src="38.jpg" alt="Fried Rice & Chicken"/><p class="menu-name">Fried Rice & Chicken</p><p class="menu-price">₦4,000</p></div>
-      <div class="menu-card"><img src="47.jpg" alt="Efo Riro"/><p class="menu-name">Efo Riro & Pounded Yam</p><p class="menu-price">₦4,200</p></div>
-      <div class="menu-card"><img src="55.jpg" alt="Egusi"/><p class="menu-name">Egusi & Semovita</p><p class="menu-price">₦3,800</p></div>
+      <h3 class="menu-subtitle">Rice Dishes</h3>
+      <div class="menu-card"><img src="54.jpg" alt="Jollof Rice & Chicken"/><p class="menu-name">Jollof Rice & Chicken</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="38.jpg" alt="Fried Rice & Chicken"/><p class="menu-name">Fried Rice & Chicken</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="117.jpg" alt="White Rice & Turkey"/><p class="menu-name">White Rice & Turkey</p><p class="menu-price">₦5,500</p></div>
+      <div class="menu-card"><img src="116.jpg" alt="White Rice & Chicken"/><p class="menu-name">White Rice & Chicken</p><p class="menu-price">₦5,500</p></div>
+      <div class="menu-card"><img src="117.jpg" alt="White Rice"/><p class="menu-name">White Rice</p><p class="menu-price">₦2,000</p></div>
+      <h3 class="menu-subtitle">Pepper Soup</h3>
+      <div class="menu-card"><img src="119.jpg" alt="Goat Meat Pepper Soup"/><p class="menu-name">Goat Meat Pepper Soup</p><p class="menu-price">₦5,000</p></div>
+      <div class="menu-card"><img src="120.jpg" alt="Assorted Pepper Soup"/><p class="menu-name">Assorted Pepper Soup</p><p class="menu-price">₦5,000</p></div>
+      <div class="menu-card"><img src="118.jpg" alt="Catfish Pepper Soup"/><p class="menu-name">Catfish Pepper Soup</p><p class="menu-price">₦5,000</p></div>
+      <h3 class="menu-subtitle">Meat Specials</h3>
+      <div class="menu-card"><img src="121.jpg" alt="Nkobi"/><p class="menu-name">Nkobi</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="45.jpg" alt="Asun"/><p class="menu-name">Asun</p><p class="menu-price">₦3,000</p></div>
+      <div class="menu-card"><img src="123.jpg" alt="Pepper Gizzard"/><p class="menu-name">Pepper Gizzard</p><p class="menu-price">₦5,000</p></div>
+      <div class="menu-card"><img src="125.jpg" alt="Pepper Snail Medley"/><p class="menu-name">Pepper Snail Medley</p><p class="menu-price">₦8,000</p></div>
+      <h3 class="menu-subtitle">Barbecue</h3>
+      <div class="menu-card"><img src="126.jpg" alt="BBQ Turkey"/><p class="menu-name">BBQ Turkey</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="127.jpg" alt="BBQ Chicken"/><p class="menu-name">BBQ Chicken</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="131.jpg" alt="BBQ Catfish"/><p class="menu-name">BBQ Catfish</p><p class="menu-price">₦5,500</p></div>
+      <div class="menu-card"><img src="128.jpg" alt="BBQ Croaker"/><p class="menu-name">BBQ Croaker</p><p class="menu-price">₦5,500</p></div>
+      <div class="menu-card"><img src="129.jpg" alt="Croaker Fish(non-BBQ)"/><p class="menu-name">Croaker Fish(non-BBQ)</p><p class="menu-price">₦2,000</p></div>
+      <h3 class="menu-subtitle">Noodles</h3>
+      <div class="menu-card"><img src="132.jpg" alt="Noodles & Chicken"/><p class="menu-name">Noodles & Chicken</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="133.jpg" alt="Noodles & Turkey"/><p class="menu-name">Noodles & Turkey</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="134.jpg" alt="Noodles & Egg"/><p class="menu-name">Noodles & Egg</p><p class="menu-price">₦5,500</p></div>
+      <h3 class="menu-subtitle">Swallow</h3>
+      <div class="menu-card"><img src="47.jpg" alt="Efo Riro & Pounded Yam"/><p class="menu-name">Efo Riro & Pounded Yam</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="55.jpg" alt="Egusi & Semovita"/><p class="menu-name">Egusi & Semovita</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="135.jpg" alt="Lafun & Ewedu"/><p class="menu-name">Lafun & Ewedu</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="136.jpg" alt="Fufu & Ogbono"/><p class="menu-name">Fufu & Ogbono</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="137.jpg" alt="Eba & Vegetable"/><p class="menu-name">Eba & Vegetable</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="138.jpg" alt="Amala & Ewedu"/><p class="menu-name">Amala & Ewedu</p><p class="menu-price">₦6,000</p></div>
+      <h3 class="menu-subtitle">Others</h3>
+      <div class="menu-card"><img src="48.jpg" alt="Yam & Egg Sauce"/><p class="menu-name">Yam & Egg Sauce</p><p class="menu-price">₦6,000</p></div>
+      <div class="menu-card"><img src="140.jpg" alt="French Fries"/><p class="menu-name">French Fries</p><p class="menu-price">₦6,000</p></div>
       <div class="menu-card"><img src="40.jpg" alt="Shawarma"/><p class="menu-name">Shawarma</p><p class="menu-price">₦2,500</p></div>
-      <div class="menu-card"><img src="57.jpg" alt="Grilled Turkey"/><p class="menu-name">Grilled Turkey</p><p class="menu-price">₦4,000</p></div>
-      <div class="menu-card"><img src="45.jpg" alt="Asun"/><p class="menu-name">Asun</p><p class="menu-price">₦4,500</p></div>
-      <div class="menu-card"><img src="43.jpg" alt="Seafood Pasta"/><p class="menu-name">Seafood Pasta</p><p class="menu-price">₦5,200</p></div>
-      <div class="menu-card"><img src="49.jpg" alt="Club Sandwich"/><p class="menu-name">Club Sandwich</p><p class="menu-price">₦3,000</p></div>
-      <div class="menu-card"><img src="48.jpg" alt="Yam & Egg"/><p class="menu-name">Yam & Egg Sauce</p><p class="menu-price">₦2,800</p></div>
     </div>
-
     <!-- DRINKS SECTION -->
      <h1>CLAZZ DRINK MENU</h1>
     <div class="menu-scroll">
@@ -560,6 +711,26 @@ footer {
       <div class="menu-card"><img src="93.jpg" alt="Smirnoff Ice Black"/><p class="menu-name">Smirnoff Ice Black</p><p class="menu-price">₦2,000</p></div>
       <div class="menu-card"><img src="44.jpg" alt="Trophy"/><p class="menu-name">Trophy</p><p class="menu-price">₦2,000</p></div>
       <div class="menu-card"><img src="86.jpg" alt="Goldberg"/><p class="menu-name">Goldberg</p><p class="menu-price">₦2,000</p></div>
+      <h3 class="menu-subtitle">Shots</h3>
+      <div class="menu-card"><img src="100.jpg" alt="Tequilla shots"/><p class="menu-name">Tequilla shots</p><p class="menu-price">₦2,500</p></div>
+      <div class="menu-card"><img src="99.jpg" alt="Beun Amigos"/><p class="menu-name">Beun Amigos</p><p class="menu-price">₦80,000</p></div>
+      <h3 class="menu-subtitle">Cocktails</h3>
+      <div class="menu-card"><img src="102.jpg" alt="Strawbeery Daiqiuri"/><p class="menu-name">Strawbeery Daiqiuri</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="103.jpg" alt="Margarita"/><p class="menu-name">Margarita</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="101.jpg" alt="Mojito"/><p class="menu-name">Mojito</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="104.jpg" alt="Long Island Iced Tea"/><p class="menu-name">Long Island Iced Tea</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="105.jpg" alt="Sex on the Beach"/><p class="menu-name">Sex on the Beach</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="106.jpg" alt="Cosmopolitan"/><p class="menu-name">Cosmopolitan</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="107.jpg" alt="Pina Colada"/><p class="menu-name">Pina Colada</p><p class="menu-price">₦7,500</p></div>
+      <div class="menu-card"><img src="108.jpg" alt="Whiskey Sour"/><p class="menu-name">Whiskey Sour</p><p class="menu-price">₦7,500</p></div>
+      <h3 class="menu-subtitle">Mocktails</h3>
+      <div class="menu-card"><img src="109.jpg" alt="Double Apple"/><p class="menu-name">Double Apple</p><p class="menu-price">₦8,000</p></div>
+      <div class="menu-card"><img src="110.jpg" alt="Lemon & Mint Grape "/><p class="menu-name">Lemon & Mint Grape</p><p class="menu-price">₦8,000</p></div>
+      <div class="menu-card"><img src="111.jpg" alt="Milkshake"/><p class="menu-name">Milkshake</p><p class="menu-price">₦4,000</p></div>
+      <div class="menu-card"><img src="112.jpg" alt="Virgin Colada"/><p class="menu-name">Virgin Colada</p><p class="menu-price">₦4,000</p></div>
+      <div class="menu-card"><img src="113.jpg" alt="Fruit Punch"/><p class="menu-name">Fruit Punch</p><p class="menu-price">₦4,000</p></div>
+      <div class="menu-card"><img src="114.jpg" alt="Daiquiri (Non-alcholic)"/><p class="menu-name">Daiquiri (Non-alcholic)</p><p class="menu-price">₦4,000</p></div>
+      <div class="menu-card"><img src="115.jpg" alt="Chapman"/><p class="menu-name">Chapman</p><p class="menu-price">₦4,000</p></div>
       <h3 class="menu-subtitle">Energy Drinks</h3>
       <div class="menu-card"><img src="72.jpg" alt="Monster"/><p class="menu-name">Monster</p><p class="menu-price">₦2,500</p></div>
       <div class="menu-card"><img src="81.jpg" alt="Powerhorse"/><p class="menu-name">Powerhorse</p><p class="menu-price">₦2,500</p></div>
@@ -585,7 +756,7 @@ footer {
         <p> 7:00 PM kickoff (arrive early)</p>
         <p>Venue: CLAZZ lounge VIP Screen Area</p>
        <p> Dress code: jersey or Smart casual</p>
-       <p>Free drink for first 20 guests
+       <p>Incentives: Free drink for first 20 guests
 
         Predict & win: Guess the correct score, win a free bottle
         
@@ -600,7 +771,7 @@ footer {
       <P>Time: 8:00 PM – Midnight</P>
       <p>Venue: CLAZZ Main Lounge</p>
       <p>Dress Code: Stylish & Comfortable</p>
-      <p>ncentives:
+      <p>Incentives:
 
         Free cocktail for best performer
         
@@ -633,8 +804,6 @@ footer {
     <img src="7.jpg" alt="Gallery Image 3" class="gallery-image">
   </div>
   </section>
-
-  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -773,7 +942,7 @@ footer {
         <input type="email" name="email" id="email" placeholder="Your Email" required>
         <textarea name="message" id="message" placeholder="Your Message" rows="4" required></textarea>
         <button type="submit">Send to WhatsApp</button>
-      </form>
+      </form></section>
 
       <!-- Contact Info -->
       <div class="contact-info">
